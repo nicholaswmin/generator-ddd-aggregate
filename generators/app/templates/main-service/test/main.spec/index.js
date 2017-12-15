@@ -1,7 +1,6 @@
 'use strict'
 
 const chai = require('chai')
-const MockRepo = require('mock-repo')
 
 chai.should()
 
