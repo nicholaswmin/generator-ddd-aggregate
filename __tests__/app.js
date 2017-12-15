@@ -19,7 +19,7 @@ describe('generator-ddd-aggregate:app', () => {
   it('creates Service files', () => {
     assert.file(['account-service/index.js']);
     assert.file(['account-service/test/account-service.spec/index.js']);
-    assert.file(['account-service/test/account-service.spec/setup.js']);
+    assert.file(['account-service/test/setup.js']);
     assert.file(['account-service/test/index.js']);
   });
 });
