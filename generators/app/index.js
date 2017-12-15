@@ -95,6 +95,36 @@ module.exports = class extends Generator {
     );
   }
 
+  createPersistenceMechanisms() {
+    // DTGs
+
+    this.fs.copyTpl(
+      this.templatePath('repos/dtgs/dtg/index.js'),
+      this.destinationPath(
+        `repos/dtgs/${this.props.aggregateName.allLowercase}-dtg/index.js`
+      ),
+      { aggregateName: this.props.aggregateName }
+    );
+
+    // Repo
+
+    this.fs.copyTpl(
+      this.templatePath('repos/repo/index.js'),
+      this.destinationPath(
+        `repos/${this.props.aggregateName.allLowercase}-repo/index.js`
+      ),
+      { aggregateName: this.props.aggregateName }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('repos/repo/test/index.js'),
+      this.destinationPath(
+        `repos/${this.props.aggregateName.allLowercase}-repo/test/index.js`
+      ),
+      { aggregateName: this.props.aggregateName }
+    );
+  }
+
   install() {
     // This.installDependencies()
   }
