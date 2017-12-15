@@ -7,7 +7,7 @@ Generate [Domain Driven Design][ddd] [Aggregates][aggr] for Node.js
 ## Install
 
 ```bash
-$ npm install -g generator-ddd-aggregate
+$ npm i -g generator-ddd-aggregate
 ```
 
 ## Usage
