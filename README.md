@@ -35,11 +35,11 @@ account
 │   └── dtgs
 │       └── account-dtg
 │           └── index.js
-│   └── repos
-│       └── account-repo
-│           └── test
-│               └── index.js
+|
+│   └── account-repo
+│       └── test
 │           └── index.js
+│       └── index.js
 |
 └── account-service
     ├── test
