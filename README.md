@@ -22,20 +22,30 @@ $ yo ddd-aggregate
 
 which will generate the following folder structure:
 
-```=
+```
 account
 ├── classes
-│   └── Account
+│   └── account
 │       ├── test
 │       │   ├── account.assertion.js
 │       │   └── index.js
 │       └── index.js
 |
+├── repos
+│   └── dtgs
+│       └── account-dtg
+│           └── index.js
+│   └── repos
+│       └── account-repo
+│           └── test
+│               └── index.js
+│           └── index.js
+|
 └── account-service
     ├── test
     │   ├── account-service.spec
     │   │   ├── index.js
-    │   │   └── setup.js
+    │   └── setup.js
     │   └── index.js
     └── index.js
 ```
