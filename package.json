@@ -1,6 +1,6 @@
 {
   "name": "generator-ddd-aggregate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generate Domain Driven Design Aggregates for Node.js",
   "homepage": "https://github.com/nicholaswmin/generator-ddd-aggregate#readme",
   "author": "@nicholaswmin",
