@@ -35,15 +35,15 @@ module.exports = class extends Generator {
     });
   }
 
-  createMainClass() {
+  createClass() {
     this.fs.copyTpl(
-      this.templatePath('main-class/main-class.js'),
+      this.templatePath('class/index.js'),
       this.destinationPath(`classes/${this.props.aggregateName.firstUppercase}/index.js`),
       { aggregateName: this.props.aggregateName }
     );
 
     this.fs.copyTpl(
-      this.templatePath('main-class/test/index.js'),
+      this.templatePath('class/test/index.js'),
       this.destinationPath(
         `classes/${this.props.aggregateName.firstUppercase}/test/index.js`
       ),
@@ -51,7 +51,7 @@ module.exports = class extends Generator {
     );
 
     this.fs.copyTpl(
-      this.templatePath('main-class/test/main-class.assertion.js'),
+      this.templatePath('class/test/class.assertion.js'),
       this.destinationPath(
         `classes/${this.props.aggregateName.firstUppercase}/test/${
           this.props.aggregateName.allLowercase
@@ -63,13 +63,13 @@ module.exports = class extends Generator {
 
   createServiceClass() {
     this.fs.copyTpl(
-      this.templatePath('main-service/index.js'),
+      this.templatePath('service/index.js'),
       this.destinationPath(`${this.props.aggregateName.allLowercase}-service/index.js`),
       { aggregateName: this.props.aggregateName }
     );
 
     this.fs.copyTpl(
-      this.templatePath('main-service/test/index.js'),
+      this.templatePath('service/test/index.js'),
       this.destinationPath(
         `${this.props.aggregateName.allLowercase}-service/test/index.js`
       ),
@@ -77,7 +77,7 @@ module.exports = class extends Generator {
     );
 
     this.fs.copyTpl(
-      this.templatePath('main-service/test/main.spec/index.js'),
+      this.templatePath('service/test/service.spec/index.js'),
       this.destinationPath(
         `${this.props.aggregateName.allLowercase}-service/test/${
           this.props.aggregateName.allLowercase
@@ -87,7 +87,7 @@ module.exports = class extends Generator {
     );
 
     this.fs.copyTpl(
-      this.templatePath('main-service/test/setup.js'),
+      this.templatePath('service/test/setup.js'),
       this.destinationPath(
         `${this.props.aggregateName.allLowercase}-service/test/setup.js`
       ),
