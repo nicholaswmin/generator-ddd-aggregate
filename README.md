@@ -1,4 +1,7 @@
 # generator-ddd-aggregate
+
+[![Build Status](https://travis-ci.org/nicholaswmin/generator-ddd-aggregate.svg?branch=master)](https://travis-ci.org/nicholaswmin/generator-ddd-aggregate)
+
 Generate [Domain Driven Design][ddd] [Aggregates][aggr] for Node.js
 
 ## Install
