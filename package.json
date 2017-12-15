@@ -41,8 +41,9 @@
     "url": "https://github.com/nicholaswmin/generator-ddd-aggregate/issues"
   },
   "dependencies": {
-    "yeoman-generator": "^2.0.1",
     "chalk": "^2.1.0",
+    "change-case": "^3.0.1",
+    "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.1"
   },
   "jest": {

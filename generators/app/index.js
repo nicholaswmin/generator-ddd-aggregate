@@ -3,6 +3,7 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
+const changeCase = require('change-case');
 
 module.exports = class extends Generator {
   prompting() {
@@ -24,13 +25,14 @@ module.exports = class extends Generator {
     ];
 
     return this.prompt(prompts).then(props => {
-      this.props = props;
+      this.props = Object.assign(props, {
+        name: props.aggregateName.split('-').join(' ')
+      });
 
       this.props.aggregateName = {
-        allLowercase: props.aggregateName.toLowerCase(),
-        firstUppercase:
-          props.aggregateName.charAt(0).toUpperCase() +
-          props.aggregateName.toLowerCase().slice(1)
+        paramCase: changeCase.paramCase(props.aggregateName),
+        camelCase: changeCase.camelCase(props.aggregateName),
+        pascalCase: changeCase.pascalCase(props.aggregateName)
       };
     });
   }
@@ -38,23 +40,21 @@ module.exports = class extends Generator {
   createClass() {
     this.fs.copyTpl(
       this.templatePath('class/index.js'),
-      this.destinationPath(`classes/${this.props.aggregateName.firstUppercase}/index.js`),
+      this.destinationPath(`classes/${this.props.aggregateName.paramCase}/index.js`),
       { aggregateName: this.props.aggregateName }
     );
 
     this.fs.copyTpl(
       this.templatePath('class/test/index.js'),
-      this.destinationPath(
-        `classes/${this.props.aggregateName.firstUppercase}/test/index.js`
-      ),
+      this.destinationPath(`classes/${this.props.aggregateName.paramCase}/test/index.js`),
       { aggregateName: this.props.aggregateName }
     );
 
     this.fs.copyTpl(
       this.templatePath('class/test/class.assertion.js'),
       this.destinationPath(
-        `classes/${this.props.aggregateName.firstUppercase}/test/${
-          this.props.aggregateName.allLowercase
+        `classes/${this.props.aggregateName.paramCase}/test/${
+          this.props.aggregateName.paramCase
         }.assertion.js`
       ),
       { aggregateName: this.props.aggregateName }
@@ -64,23 +64,21 @@ module.exports = class extends Generator {
   createServiceClass() {
     this.fs.copyTpl(
       this.templatePath('service/index.js'),
-      this.destinationPath(`${this.props.aggregateName.allLowercase}-service/index.js`),
+      this.destinationPath(`${this.props.aggregateName.paramCase}-service/index.js`),
       { aggregateName: this.props.aggregateName }
     );
 
     this.fs.copyTpl(
       this.templatePath('service/test/index.js'),
-      this.destinationPath(
-        `${this.props.aggregateName.allLowercase}-service/test/index.js`
-      ),
+      this.destinationPath(`${this.props.aggregateName.paramCase}-service/test/index.js`),
       { aggregateName: this.props.aggregateName }
     );
 
     this.fs.copyTpl(
       this.templatePath('service/test/service.spec/index.js'),
       this.destinationPath(
-        `${this.props.aggregateName.allLowercase}-service/test/${
-          this.props.aggregateName.allLowercase
+        `${this.props.aggregateName.paramCase}-service/test/${
+          this.props.aggregateName.paramCase
         }-service.spec/index.js`
       ),
       { aggregateName: this.props.aggregateName }
@@ -88,9 +86,7 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath('service/test/setup.js'),
-      this.destinationPath(
-        `${this.props.aggregateName.allLowercase}-service/test/setup.js`
-      ),
+      this.destinationPath(`${this.props.aggregateName.paramCase}-service/test/setup.js`),
       { aggregateName: this.props.aggregateName }
     );
   }
@@ -101,7 +97,7 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('repos/dtgs/dtg/index.js'),
       this.destinationPath(
-        `repos/dtgs/${this.props.aggregateName.allLowercase}-dtg/index.js`
+        `repos/dtgs/${this.props.aggregateName.paramCase}-dtg/index.js`
       ),
       { aggregateName: this.props.aggregateName }
     );
@@ -110,16 +106,14 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath('repos/repo/index.js'),
-      this.destinationPath(
-        `repos/${this.props.aggregateName.allLowercase}-repo/index.js`
-      ),
+      this.destinationPath(`repos/${this.props.aggregateName.paramCase}-repo/index.js`),
       { aggregateName: this.props.aggregateName }
     );
 
     this.fs.copyTpl(
       this.templatePath('repos/repo/test/index.js'),
       this.destinationPath(
-        `repos/${this.props.aggregateName.allLowercase}-repo/test/index.js`
+        `repos/${this.props.aggregateName.paramCase}-repo/test/index.js`
       ),
       { aggregateName: this.props.aggregateName }
     );
