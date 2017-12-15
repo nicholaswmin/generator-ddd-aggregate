@@ -30,22 +30,19 @@ account
 │       │   ├── account.assertion.js
 │       │   └── index.js
 │       └── index.js
-|
 ├── repos
-│   └── dtgs
-│       └── account-dtg
-│           └── index.js
-|
+│   ├── dtgs
+│   │   └── account-dtg
+│   │       └── index.js
 │   └── account-repo
-│       └── test
-│           └── index.js
+│       ├── test
+│       │   └── index.js
 │       └── index.js
-|
 └── account-service
     ├── test
     │   ├── account-service.spec
-    │   │   ├── index.js
-    │   └── setup.js
+    │   │   └── index.js
+    │   ├── setup.js
     │   └── index.js
     └── index.js
 ```
