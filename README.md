@@ -47,17 +47,11 @@ account
     └── index.js
 ```
 
-
 ## Test
 
 ```bash
 $ npm test
 ```
-
-## License
-
-MIT
-
 
 ## Authors
 
@@ -66,3 +60,7 @@ MIT
 [ddd]: https://en.wikipedia.org/wiki/Domain-driven_design
 [aggr]: https://martinfowler.com/bliki/DDD_Aggregate.html
 [nicholaswmin]: https://github.com/nicholaswmin
+
+## License
+
+MIT
