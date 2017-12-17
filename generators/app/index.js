@@ -33,7 +33,8 @@ module.exports = class extends Generator {
         paramCase: changeCase.paramCase(props.aggregateName),
         snakeCase: changeCase.snakeCase(props.aggregateName),
         camelCase: changeCase.camelCase(props.aggregateName),
-        pascalCase: changeCase.pascalCase(props.aggregateName)
+        pascalCase: changeCase.pascalCase(props.aggregateName),
+        titleCase: changeCase.titleCase(props.aggregateName)
       };
     });
   }
@@ -116,6 +117,14 @@ module.exports = class extends Generator {
       this.destinationPath(
         `repos/${this.props.aggregateName.paramCase}-repo/test/index.js`
       ),
+      { aggregateName: this.props.aggregateName }
+    );
+  }
+
+  createMainTestHook() {
+    this.fs.copyTpl(
+      this.templatePath('test/index.js'),
+      this.destinationPath('test/index.js'),
       { aggregateName: this.props.aggregateName }
     );
   }

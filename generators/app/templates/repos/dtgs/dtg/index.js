@@ -16,7 +16,7 @@ class <%= aggregateName.pascalCase %>DTG {
   }
 
   findOne(db, filter) {
-    return db.first('<%= aggregateName.snakeCase %>')
+    return db('<%= aggregateName.snakeCase %>').first()
       .modify(q => {
         if (filter) {
           q.where(filter)
@@ -41,7 +41,9 @@ class <%= aggregateName.pascalCase %>DTG {
 
   update(db, <%= aggregateName.camelCase %>) {
     return db('<%= aggregateName.snakeCase %>')
-      .update({})
+      .update({
+        name: <%= aggregateName.camelCase %>.name
+      })
       .where({
         id_<%= aggregateName.snakeCase %>: <%= aggregateName.camelCase %>.id_<%= aggregateName.snakeCase %>
       })

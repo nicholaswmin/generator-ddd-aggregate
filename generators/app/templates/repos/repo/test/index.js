@@ -4,7 +4,7 @@ const chai = require('chai')
 const <%= aggregateName.pascalCase %> = require('../../../classes/<%= aggregateName.paramCase %>')
 const <%= aggregateName.camelCase %>InstanceAssertion = require('../../../classes/<%= aggregateName.paramCase %>/test/<%= aggregateName.paramCase %>.assertion.js')
 
-const db = require('../../../../db.js')
+const db = require('../../../../db')
 const <%= aggregateName.pascalCase %>Repo = require('../index.js')
 
 chai.should()
@@ -27,7 +27,7 @@ describe('#get()', () => {
   describe('<%= aggregateName.pascalCase %>', () => {
     it('returns a <%= aggregateName.pascalCase %> ', () => {
       return <%= aggregateName.camelCase %>Repo.get(db, {
-        condition: 'foo'
+        name: 'John Doe'
       }).then(<%= aggregateName.camelCase %> => {
         <%= aggregateName.camelCase %>.should.be.a.<%= aggregateName.camelCase %>Instance
       })
@@ -46,7 +46,7 @@ describe('#getAll()', () => {
   })
 
   it('returns all the <%= aggregateName.camelCase %>s', () => {
-    <%= aggregateName.camelCase %>.should.have.lengthOf(2)
+    <%= aggregateName.camelCase %>s.should.have.lengthOf(2)
   })
 })
 
@@ -56,8 +56,8 @@ describe('#upsert()', () => {
 
     beforeEach(() => {
       <%= aggregateName.camelCase %> = new <%= aggregateName.pascalCase %>({
-        id_<%= aggregateName.snakeCase %>: '683ba9cf-8627-4b61-add4-ef2c5fa7b1aa',
-        name: 'Foo'
+        id_<%= aggregateName.snakeCase %>: 'b27d83bd-04b5-49d5-94a1-1eb6afdc5650',
+        name: 'Richard Roe'
       })
     })
 
@@ -98,7 +98,7 @@ describe('#upsert()', () => {
 
       it('updates the <%= aggregateName.pascalCase %> information', () => {
         return <%= aggregateName.camelCase %>Repo.get(db, {
-          id_<%= aggregateName.snakeCase %>: <%= aggregateName.camelCase %>.id_<%= aggregateName.snakeCase %>
+          id_<%= aggregateName.snakeCase %>: updated<%= aggregateName.pascalCase %>.id_<%= aggregateName.snakeCase %>
         }).then(<%= aggregateName.camelCase %> => {
           <%= aggregateName.camelCase %>.name.should.equal('Bar')
         })
@@ -106,8 +106,8 @@ describe('#upsert()', () => {
 
       it('returns a valid Local <%= aggregateName.pascalCase %> Instance', () => {
         return <%= aggregateName.camelCase %>Repo.get(db, {
-          id_<%= aggregateName.snakeCase %>: <%= aggregateName.camelCase %>.id_<%= aggregateName.snakeCase %>
-        }).then(<%= aggregateName.pascalCase %> => {
+          id_<%= aggregateName.snakeCase %>: updated<%= aggregateName.pascalCase %>.id_<%= aggregateName.snakeCase %>
+        }).then(<%= aggregateName.camelCase %> => {
           <%= aggregateName.camelCase %>.should.be.a.<%= aggregateName.camelCase %>Instance
         })
       })
