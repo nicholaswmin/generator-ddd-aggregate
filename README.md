@@ -8,7 +8,7 @@ The generated Aggregate contains:
 
 - The Base Class.
 - A [Repo][generic-repo] that uses [knex.js][knex] for persisting your
-  aggregate.
+  Aggregate.
 - A Service Class.
 - Boilerplate tests for the Class and the Service.
 
