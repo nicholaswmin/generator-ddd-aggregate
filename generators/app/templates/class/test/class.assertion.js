@@ -3,16 +3,16 @@
 const Guid = require('guid')
 
 module.exports = (chai, utils) => {
-  utils.addProperty(chai.Assertion.prototype, '<%= aggregateName.allLowercase %>Instance', function () {
+  utils.addProperty(chai.Assertion.prototype, '<%= aggregateName.camelCase %>Instance', function () {
     this._obj.should.be.ok
 
-    this._obj.should.have.property('id_<%= aggregateName.allLowercase %>')
-    this._obj.id_<%= aggregateName.allLowercase %>.should.be.a('String')
+    this._obj.should.have.property('id_<%= aggregateName.snakeCase %>')
+    this._obj.id_<%= aggregateName.snakeCase %>.should.be.a('String')
     this.assert(
-      Guid.isGuid(this._obj.id_<%= aggregateName.allLowercase %>),
-      'expected #{this} to have a property id_<%= aggregateName.allLowercase %> in a GUID format'
+      Guid.isGuid(this._obj.id_<%= aggregateName.snakeCase %>),
+      'expected #{this} to have a property id_<%= aggregateName.snakeCase %> in a GUID format'
     )
 
-    // Rest of instance checks go here..
+    // Rest of instance checks ..
   })
 }

@@ -1,12 +1,13 @@
 'use strict'
 
 const createError = require('http-errors')
-const <%= aggregateName.firstUppercase %> = require('../classes/<%= aggregateName.firstUppercase %>')
+const <%= aggregateName.pascalCase %> = require('../classes/<%= aggregateName.paramCase %>')
 
-class <%= aggregateName.firstUppercase %>Service {
-  constructor({ db, <%= aggregateName.allLowercase %>Repo }) {
+class <%= aggregateName.pascalCase %>Service {
+  constructor({ db, <%= aggregateName.camelCase %>Repo }) {
+    this.<%= aggregateName.camelCase %>Repo = <%= aggregateName.camelCase %>Repo
     this.db = db
   }
 }
 
-module.exports = <%= aggregateName.firstUppercase %>Service
+module.exports = <%= aggregateName.pascalCase %>Service

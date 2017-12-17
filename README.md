@@ -22,35 +22,36 @@ $ yo ddd-aggregate
 
 which will generate the following folder structure:
 
-```=
+```
 account
 ├── classes
-│   └── Account
+│   └── account
 │       ├── test
 │       │   ├── account.assertion.js
 │       │   └── index.js
 │       └── index.js
-|
+├── repos
+│   ├── dtgs
+│   │   └── account-dtg
+│   │       └── index.js
+│   └── account-repo
+│       ├── test
+│       │   └── index.js
+│       └── index.js
 └── account-service
     ├── test
     │   ├── account-service.spec
-    │   │   ├── index.js
-    │   │   └── setup.js
+    │   │   └── index.js
+    │   ├── setup.js
     │   └── index.js
     └── index.js
 ```
-
 
 ## Test
 
 ```bash
 $ npm test
 ```
-
-## License
-
-MIT
-
 
 ## Authors
 
@@ -59,3 +60,7 @@ MIT
 [ddd]: https://en.wikipedia.org/wiki/Domain-driven_design
 [aggr]: https://martinfowler.com/bliki/DDD_Aggregate.html
 [nicholaswmin]: https://github.com/nicholaswmin
+
+## License
+
+MIT

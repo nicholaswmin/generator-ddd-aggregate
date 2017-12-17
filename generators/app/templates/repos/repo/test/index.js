@@ -1,19 +1,19 @@
 'use strict'
 
 const chai = require('chai')
-const <%= aggregateName.firstUppercase %> = require('../../../classes/<%= aggregateName.firstUppercase %>')
-const <%= aggregateName.allLowercase %>InstanceAssertion = require('../../../classes/<%= aggregateName.firstUppercase %>/test/<%= aggregateName.allLowercase %>.assertion.js')
+const <%= aggregateName.pascalCase %> = require('../../../classes/<%= aggregateName.paramCase %>')
+const <%= aggregateName.camelCase %>InstanceAssertion = require('../../../classes/<%= aggregateName.paramCase %>/test/<%= aggregateName.paramCase %>.assertion.js')
 
-const db = require('../../../../../db')
-const <%= aggregateName.firstUppercase %>Repo = require('../index.js')
+const db = require('../../../../db')
+const <%= aggregateName.pascalCase %>Repo = require('../index.js')
 
 chai.should()
-chai.use(<%= aggregateName.firstUppercase %>InstanceAssertion)
+chai.use(<%= aggregateName.camelCase %>InstanceAssertion)
 
-let <%= aggregateName.allLowercase %>Repo;
+let <%= aggregateName.camelCase %>Repo;
 
 beforeEach(() => {
-  <%= aggregateName.allLowercase %>Repo = new <%= aggregateName.firstUppercase %>Repo()
+  <%= aggregateName.camelCase %>Repo = new <%= aggregateName.pascalCase %>Repo()
 
   return db.migrate.rollback()
     .then(() => {
@@ -24,12 +24,12 @@ beforeEach(() => {
 })
 
 describe('#get()', () => {
-  describe('<%= aggregateName.firstUppercase %>', () => {
-    it('returns a <%= aggregateName.firstUppercase %> ', () => {
-      return <%= aggregateName.allLowercase %>Repo.get(db, {
-        condition: 'foo'
-      }).then(<%= aggregateName.allLowercase %> => {
-        <%= aggregateName.allLowercase %>.should.be.a.<%= aggregateName.allLowercase %>Instance
+  describe('<%= aggregateName.pascalCase %>', () => {
+    it('returns a <%= aggregateName.pascalCase %> ', () => {
+      return <%= aggregateName.camelCase %>Repo.get(db, {
+        name: 'John Doe'
+      }).then(<%= aggregateName.camelCase %> => {
+        <%= aggregateName.camelCase %>.should.be.a.<%= aggregateName.camelCase %>Instance
       })
     })
   })
@@ -37,78 +37,78 @@ describe('#get()', () => {
 })
 
 describe('#getAll()', () => {
-  let <%= aggregateName.allLowercase %>s
+  let <%= aggregateName.camelCase %>s
 
   beforeEach(() => {
-    return <%= aggregateName.allLowercase %>Repo.getAll(db).then(result => {
-      <%= aggregateName.allLowercase %>s = result
+    return <%= aggregateName.camelCase %>Repo.getAll(db).then(result => {
+      <%= aggregateName.camelCase %>s = result
     })
   })
 
-  it('returns all the <%= aggregateName.allLowercase %>s', () => {
-    <%= aggregateName.allLowercase %>.should.have.lengthOf(2)
+  it('returns all the <%= aggregateName.camelCase %>s', () => {
+    <%= aggregateName.camelCase %>s.should.have.lengthOf(2)
   })
 })
 
 describe('#upsert()', () => {
-  describe('<%= aggregateName.firstUppercase %>', () => {
-    let <%= aggregateName.allLowercase %>
+  describe('<%= aggregateName.pascalCase %>', () => {
+    let <%= aggregateName.camelCase %>
 
     beforeEach(() => {
-      <%= aggregateName.firstUppercase %> = new <%= aggregateName.firstUppercase %>({
-        id_<%= aggregateName.allLowercase %>: '683ba9cf-8627-4b61-add4-ef2c5fa7b1aa',
-        name: 'Foo'
+      <%= aggregateName.camelCase %> = new <%= aggregateName.pascalCase %>({
+        id_<%= aggregateName.snakeCase %>: 'b27d83bd-04b5-49d5-94a1-1eb6afdc5650',
+        name: 'Richard Roe'
       })
     })
 
-    describe('<%= aggregateName.firstUppercase %> does not exist', () => {
-      it('inserts a <%= aggregateName.firstUppercase %> if it does not exist', () => {
-        return <%= aggregateName.allLowercase %>Repo.upsert(db, <%= aggregateName.allLowercase %>).then(() => {
-          return <%= aggregateName.allLowercase %>Repo.getAll(db)
-        }).then(<%= aggregateName.allLowercase %>s => {
-          <%= aggregateName.allLowercase %>s.should.have.lengthOf(3)
+    describe('<%= aggregateName.pascalCase %> does not exist', () => {
+      it('inserts a <%= aggregateName.pascalCase %> if it does not exist', () => {
+        return <%= aggregateName.camelCase %>Repo.upsert(db, <%= aggregateName.camelCase %>).then(() => {
+          return <%= aggregateName.camelCase %>Repo.getAll(db)
+        }).then(<%= aggregateName.camelCase %>s => {
+          <%= aggregateName.camelCase %>s.should.have.lengthOf(3)
         })
       })
     })
 
-    describe('<%= aggregateName.firstUppercase %> exists', () => {
-      let updated<%= aggregateName.firstUppercase %>
+    describe('<%= aggregateName.pascalCase %> exists', () => {
+      let updated<%= aggregateName.pascalCase %>
 
       beforeEach(() => {
-        updated<%= aggregateName.firstUppercase %> = new <%= aggregateName.firstUppercase %>({
-          id_<%= aggregateName.allLowercase %>: '683ba9cf-8627-4b61-add4-ef2c5fa7b1aa',
+        updated<%= aggregateName.pascalCase %> = new <%= aggregateName.pascalCase %>({
+          id_<%= aggregateName.snakeCase %>: '683ba9cf-8627-4b61-add4-ef2c5fa7b1aa',
           name: 'Bar' // changed prop
         })
 
-        return <%= aggregateName.allLowercase %>Repo.upsert(db, <%= aggregateName.allLowercase %>).then(() => {
-          return <%= aggregateName.allLowercase %>Repo.upsert(db, updated<%= aggregateName.firstUppercase %>)
+        return <%= aggregateName.camelCase %>Repo.upsert(db, <%= aggregateName.camelCase %>).then(() => {
+          return <%= aggregateName.camelCase %>Repo.upsert(db, updated<%= aggregateName.pascalCase %>)
         })
         .then(() => {
-          return <%= aggregateName.allLowercase %>Repo.get(db, {
-            id_<%= aggregateName.allLowercase %>: <%= aggregateName.allLowercase %>.id_<%= aggregateName.allLowercase %>
+          return <%= aggregateName.camelCase %>Repo.get(db, {
+            id_<%= aggregateName.snakeCase %>: <%= aggregateName.camelCase %>.id_<%= aggregateName.snakeCase %>
           })
         })
       })
 
-      it('does not insert a new <%= aggregateName.firstUppercase %>', () => {
-        return <%= aggregateName.allLowercase %>Repo.getAll(db).then(<%= aggregateName.allLowercase %>s => {
-          <%= aggregateName.allLowercase %>s.should.have.lengthOf(3)
+      it('does not insert a new <%= aggregateName.pascalCase %>', () => {
+        return <%= aggregateName.camelCase %>Repo.getAll(db).then(<%= aggregateName.camelCase %>s => {
+          <%= aggregateName.camelCase %>s.should.have.lengthOf(3)
         })
       })
 
-      it('updates the <%= aggregateName.firstUppercase %> information', () => {
-        return <%= aggregateName.allLowercase %>Repo.get(db, {
-          id_<%= aggregateName.allLowercase %>: <%= aggregateName.allLowercase %>.id_<%= aggregateName.allLowercase %>
-        }).then(<%= aggregateName.allLowercase %> => {
-          <%= aggregateName.allLowercase %>.name.should.equal('Bar')
+      it('updates the <%= aggregateName.pascalCase %> information', () => {
+        return <%= aggregateName.camelCase %>Repo.get(db, {
+          id_<%= aggregateName.snakeCase %>: updated<%= aggregateName.pascalCase %>.id_<%= aggregateName.snakeCase %>
+        }).then(<%= aggregateName.camelCase %> => {
+          <%= aggregateName.camelCase %>.name.should.equal('Bar')
         })
       })
 
-      it('returns a valid Local <%= aggregateName.firstUppercase %> Instance', () => {
-        return <%= aggregateName.allLowercase %>Repo.get(db, {
-          id_<%= aggregateName.allLowercase %>: <%= aggregateName.allLowercase %>.id_<%= aggregateName.allLowercase %>
-        }).then(<%= aggregateName.firstUppercase %> => {
-          <%= aggregateName.allLowercase %>.should.be.a.<%= aggregateName.allLowercase %>Instance
+      it('returns a valid Local <%= aggregateName.pascalCase %> Instance', () => {
+        return <%= aggregateName.camelCase %>Repo.get(db, {
+          id_<%= aggregateName.snakeCase %>: updated<%= aggregateName.pascalCase %>.id_<%= aggregateName.snakeCase %>
+        }).then(<%= aggregateName.camelCase %> => {
+          <%= aggregateName.camelCase %>.should.be.a.<%= aggregateName.camelCase %>Instance
         })
       })
     })

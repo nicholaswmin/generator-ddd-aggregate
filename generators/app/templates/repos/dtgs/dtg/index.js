@@ -1,22 +1,22 @@
 'use strict'
 
-class <%= aggregateName.firstUppercase %>DTG {
+class <%= aggregateName.pascalCase %>DTG {
   constructor() {
 
   }
 
-  async upsert(db, <%= aggregateName.allLowercase %>) {
-    const exists = await this.findOne(db, { id_<%= aggregateName.allLowercase %>: <%= aggregateName.allLowercase %>.id_<%= aggregateName.allLowercase %> })
+  async upsert(db, <%= aggregateName.camelCase %>) {
+    const exists = await this.findOne(db, { id_<%= aggregateName.snakeCase %>: <%= aggregateName.camelCase %>.id_<%= aggregateName.snakeCase %> })
 
     if (exists) {
-      return await this.update(db, <%= aggregateName.allLowercase %>)
+      return await this.update(db, <%= aggregateName.camelCase %>)
     } else {
-      return await this.insert(db, <%= aggregateName.allLowercase %>)
+      return await this.insert(db, <%= aggregateName.camelCase %>)
     }
   }
 
-  findAll(db, filter) {
-    return db.table('<%= aggregateName.allLowercase %>')
+  findOne(db, filter) {
+    return db('<%= aggregateName.snakeCase %>').first()
       .modify(q => {
         if (filter) {
           q.where(filter)
@@ -24,16 +24,30 @@ class <%= aggregateName.firstUppercase %>DTG {
       })
   }
 
-  insert(db, <%= aggregateName.allLowercase %>) {
-    return db('<%= aggregateName.allLowercase %>').insert({
-      id_<%= aggregateName.allLowercase %>: <%= aggregateName.allLowercase %>.id_<%= aggregateName.allLowercase %>
+  findAll(db, filter) {
+    return db.table('<%= aggregateName.snakeCase %>')
+      .modify(q => {
+        if (filter) {
+          q.where(filter)
+        }
+      })
+  }
+
+  insert(db, <%= aggregateName.camelCase %>) {
+    return db('<%= aggregateName.snakeCase %>').insert({
+      id_<%= aggregateName.snakeCase %>: <%= aggregateName.camelCase %>.id_<%= aggregateName.snakeCase %>
     })
   }
 
-  update(db, <%= aggregateName.allLowercase %>) {
-    return db('<%= aggregateName.allLowercase %>').update({})
-    .where({ id_<%= aggregateName.allLowercase %>: <%= aggregateName.allLowercase %>.id_<%= aggregateName.allLowercase %> })
+  update(db, <%= aggregateName.camelCase %>) {
+    return db('<%= aggregateName.snakeCase %>')
+      .update({
+        name: <%= aggregateName.camelCase %>.name
+      })
+      .where({
+        id_<%= aggregateName.snakeCase %>: <%= aggregateName.camelCase %>.id_<%= aggregateName.snakeCase %>
+      })
   }
 }
 
-module.exports = <%= aggregateName.firstUppercase %>DTG
+module.exports = <%= aggregateName.pascalCase %>DTG
