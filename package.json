@@ -27,9 +27,7 @@
     "yeoman-test": "^1.7.0"
   },
   "scripts": {
-    "test": "jest test",
-    "prepublish": "nsp check",
-    "precommit": "lint-staged"
+    "test": "jest test"
   },
   "repository": {
     "type": "git",
