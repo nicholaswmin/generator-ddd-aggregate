@@ -7,19 +7,12 @@ describe('generator-ddd-aggregate:app', () => {
   beforeAll(() => {
     return helpers
       .run(path.join(__dirname, '../generators/app'))
-      .withPrompts({ aggregateName: 'account' });
+      .withPrompts({ aggregateName: 'social-account' });
   });
 
   it('creates Class files', () => {
-    assert.file(['classes/Account/index.js']);
-    assert.file(['classes/Account/test/index.js']);
-    assert.file(['classes/Account/test/account.assertion.js']);
-  });
-
-  it('creates Service files', () => {
-    assert.file(['account-service/index.js']);
-    assert.file(['account-service/test/account-service.spec/index.js']);
-    assert.file(['account-service/test/setup.js']);
-    assert.file(['account-service/test/index.js']);
+    assert.file(['classes/social-account/index.js']);
+    assert.file(['classes/social-account/test/index.js']);
+    assert.file(['classes/social-account/test/social-account.assertion.js']);
   });
 });

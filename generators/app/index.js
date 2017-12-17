@@ -31,6 +31,7 @@ module.exports = class extends Generator {
 
       this.props.aggregateName = {
         paramCase: changeCase.paramCase(props.aggregateName),
+        snakeCase: changeCase.snakeCase(props.aggregateName),
         camelCase: changeCase.camelCase(props.aggregateName),
         pascalCase: changeCase.pascalCase(props.aggregateName)
       };

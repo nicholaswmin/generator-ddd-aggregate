@@ -2,26 +2,26 @@
 
 const chai = require('chai')
 const expect = chai.expect
-const <%= aggregateName.allLowercase %>InstanceAssertion = require('./<%= aggregateName.allLowercase %>.assertion.js')
+const <%= aggregateName.camelCase %>InstanceAssertion = require('./<%= aggregateName.paramCase %>.assertion.js')
 
-const <%= aggregateName.firstUppercase %> = require('../index.js')
+const <%= aggregateName.pascalCase %> = require('../index.js')
 
 chai.should()
-chai.use(<%= aggregateName.allLowercase %>InstanceAssertion)
+chai.use(<%= aggregateName.camelCase %>InstanceAssertion)
 
-const test<%= aggregateName.firstUppercase %> = {
+const test<%= aggregateName.pascalCase %> = {
   foo: 'bar'
 }
 
-let <%= aggregateName.allLowercase %>
+let <%= aggregateName.camelCase %>
 
 beforeEach(() => {
-  <%= aggregateName.allLowercase %> = new <%= aggregateName.firstUppercase %>(test<%= aggregateName.firstUppercase %>)
+  <%= aggregateName.camelCase %> = new <%= aggregateName.pascalCase %>(test<%= aggregateName.pascalCase %>)
 })
 
 describe('instantiation', () => {
   it('instantiates', () => {
-    <%= aggregateName.allLowercase %>.should.be.a.<%= aggregateName.allLowercase %>Instance
+    <%= aggregateName.camelCase %>.should.be.a.<%= aggregateName.camelCase %>Instance
   })
 })
 
