@@ -1,24 +1,30 @@
 'use strict';
 
-const <%= aggregateName.firstUppercase %>DTG = require('../dtgs/<%= aggregateName.allLowercase %>-dtg')
-const <%= aggregateName.firstUppercase %> = require('../../classes/<%= aggregateName.allLowercase %>')
+const <%= aggregateName.pascalCase %>DTG = require('../dtgs/<%= aggregateName.paramCase %>-dtg')
+const <%= aggregateName.pascalCase %> = require('../../classes/<%= aggregateName.paramCase %>')
 
-const <%= aggregateName.allLowercase %>DTG = new <%= aggregateName.firstUppercase %>DTG()
+const <%= aggregateName.camelCase %>DTG = new <%= aggregateName.pascalCase %>DTG()
 
-class <%= aggregateName.firstUppercase %>Repo {
+class <%= aggregateName.pascalCase %>Repo {
   constructor() {
 
   }
 
-  async upsert(db, <%= aggregateName.allLowercase %>) {
-    return <%= aggregateName.allLowercase %>DTG.upsert(db, <%= aggregateName.allLowercase %>);
+  async upsert(db, <%= aggregateName.camelCase %>) {
+    return <%= aggregateName.camelCase %>DTG.upsert(db, <%= aggregateName.camelCase %>);
+  }
+
+  async get(db, filter) {
+    const <%= aggregateName.camelCase %>Data = await <%= aggregateName.camelCase %>DTG.findOne(db, filter)
+
+    return <%= aggregateName.camelCase %>Data ? new <%= aggregateName.pascalCase %>(<%= aggregateName.camelCase %>Data) : undefined
   }
 
   async getAll(db, filter) {
-    const <%= aggregateName.allLowercase %>sData = await <%= aggregateName.allLowercase %>DTG.findAll(db, filter)
+    const <%= aggregateName.camelCase %>sData = await <%= aggregateName.camelCase %>DTG.findAll(db, filter)
 
-    return new <%= aggregateName.firstUppercase %>(<%= aggregateName.allLowercase %>Data)
+    return <%= aggregateName.camelCase %>sData.map(<%= aggregateName.camelCase %>Data => new <%= aggregateName.pascalCase %>(<%= aggregateName.camelCase %>Data))
   }
 }
 
-module.exports = <%= aggregateName.firstUppercase %>Repo;
+module.exports = <%= aggregateName.pascalCase %>Repo

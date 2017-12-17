@@ -1,11 +1,11 @@
 'use strict'
 
 const MockRepo = require('mock-repo')
-const <%= aggregateName.firstUppercase %>Service = require('../index.js')
+const <%= aggregateName.pascalCase %>Service = require('../index.js')
 
 module.exports = () => {
-  return new <%= aggregateName.firstUppercase %>Service({
+  return new <%= aggregateName.pascalCase %>Service({
     db: {},
-    <%= aggregateName.allLowercase %>Repo: new MockRepo({ primary_key: 'id_<%= aggregateName.allLowercase %>'})
+    <%= aggregateName.camelCase %>Repo: new MockRepo({ primary_key: 'id_<%= aggregateName.snakeCase %>'})
   })
 }

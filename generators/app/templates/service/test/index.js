@@ -1,5 +1,5 @@
 'use strict'
 
-describe('<%= aggregateName.firstUppercase %> Service', () => {
-  require('./<%= aggregateName.allLowercase %>-service.spec/index.js')
+describe('<%= aggregateName.pascalCase %> Service', () => {
+  require('./<%= aggregateName.paramCase %>-service.spec/index.js')
 })

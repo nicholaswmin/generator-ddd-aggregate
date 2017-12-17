@@ -4,10 +4,10 @@ const chai = require('chai')
 
 chai.should()
 
-let <%= aggregateName.allLowercase %>Service
+let <%= aggregateName.camelCase %>Service
 
 beforeEach(() => {
-  <%= aggregateName.allLowercase %>Service = require('../setup.js')()
+  <%= aggregateName.camelCase %>Service = require('../setup.js')()
 })
 
 describe('#foo', () => {

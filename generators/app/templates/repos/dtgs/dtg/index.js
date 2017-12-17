@@ -15,6 +15,15 @@ class <%= aggregateName.pascalCase %>DTG {
     }
   }
 
+  findOne(db, filter) {
+    return db.first('<%= aggregateName.snakeCase %>')
+      .modify(q => {
+        if (filter) {
+          q.where(filter)
+        }
+      })
+  }
+
   findAll(db, filter) {
     return db.table('<%= aggregateName.snakeCase %>')
       .modify(q => {
