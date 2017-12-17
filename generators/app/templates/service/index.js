@@ -5,6 +5,7 @@ const <%= aggregateName.pascalCase %> = require('../classes/<%= aggregateName.pa
 
 class <%= aggregateName.pascalCase %>Service {
   constructor({ db, <%= aggregateName.camelCase %>Repo }) {
+    this.<%= aggregateName.camelCase %>Repo = <%= aggregateName.camelCase %>Repo
     this.db = db
   }
 }
