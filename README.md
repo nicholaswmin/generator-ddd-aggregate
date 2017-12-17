@@ -72,7 +72,7 @@ to a composite Aggregate:
 
 ## Aggregate tests
 
-Run the generated aggregate's tests:
+Run the generated Aggregate's tests:
 
 ```
 $ mocha account/test
