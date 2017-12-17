@@ -2,7 +2,15 @@
 
 [![Build Status](https://travis-ci.org/nicholaswmin/generator-ddd-aggregate.svg?branch=master)](https://travis-ci.org/nicholaswmin/generator-ddd-aggregate)
 
-Generate [Domain Driven Design][ddd] [Aggregates][aggr] for Node.js
+Generate [Domain Driven Design][ddd] [Aggregates][aggr] for Node.js.
+
+The generated Aggregate contains:
+
+- The Base Class.
+- A [Repo][generic-repo] that uses [knex.js][knex] for persisting your
+  aggregate.
+- A Service Class.
+- Boilerplate tests for the Class and the Service.
 
 ## Install
 
@@ -13,15 +21,23 @@ $ npm i -g generator-ddd-aggregate
 
 ## Usage
 
-In the following example we'll create an 'Account' aggregate:
+The generated Aggregate is assuming the following are already installed in your
+parent project:
 
-```bash
-$ mkdir account
-$ cd account
-$ yo ddd-aggregate
+```
+$ npm i --save guid generic-repo http-errors
+$ npm i --save-dev chai mock-repo
 ```
 
-which will generate the following folder structure:
+then, the following example creates an *Account* aggregate:
+
+```bash
+$ yo ddd-aggregate
+# You will be asked to type the name of your aggregate, we
+# are assuming you typed 'account'.
+```
+
+then the generator will generate the following folder structure:
 
 ```
 account
@@ -31,24 +47,40 @@ account
 │       │   ├── account.assertion.js
 │       │   └── index.js
 │       └── index.js
-├── repos
-│   ├── dtgs
-│   │   └── account-dtg
-│   │       └── index.js
-│   └── account-repo
-│       ├── test
-│       │   └── index.js
-│       └── index.js
-└── account-service
-    ├── test
-    │   ├── account-service.spec
-    │   │   └── index.js
-    │   ├── setup.js
-    │   └── index.js
+├── repo
+│   └── index.js
+├── account-service
+│   ├── test
+│   │   ├── account-service.spec
+│   │   │   └── index.js
+│   │   ├── setup.js
+│   │   └── index.js
+│   └── index.js
+└── test
     └── index.js
 ```
 
-## Test
+## Composite Aggregates
+
+Aggregates, by definition, contain more than 1 child Class. To expand
+to a composite Aggregate:
+
+- Add all the relevant child classes in `classes`.
+- Modify your Base Class to include the relevant child classes.
+- Checkout the relevant comment in `repo/index.js` on how to rewire the
+  generated Repository to save/retrieve composite Aggregates.
+
+## Aggregate tests
+
+Run the generated aggregate's tests:
+
+```
+$ mocha account/test
+```
+
+## Generator Test
+
+Run this generator's tests:
 
 ```bash
 $ npm test
@@ -56,12 +88,14 @@ $ npm test
 
 ## Authors
 
-- [Nicholas Kyriakides, @nicholaswmin][nicholaswmin]
-
-[ddd]: https://en.wikipedia.org/wiki/Domain-driven_design
-[aggr]: https://martinfowler.com/bliki/DDD_Aggregate.html
-[nicholaswmin]: https://github.com/nicholaswmin
+- Nicholas Kyriakides, [@nicholaswmin][nicholaswmin]
 
 ## License
 
 MIT
+
+[ddd]: https://en.wikipedia.org/wiki/Domain-driven_design
+[aggr]: https://martinfowler.com/bliki/DDD_Aggregate.html
+[nicholaswmin]: https://github.com/nicholaswmin
+[generic-repo]: https://www.npmjs.com/package/generic-repo
+[knex]: http://knexjs.org/

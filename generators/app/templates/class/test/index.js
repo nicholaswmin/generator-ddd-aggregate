@@ -25,7 +25,7 @@ describe('instantiation', () => {
   })
 })
 
-describe('#fooMethod()', () => {
+describe('#foo()', () => {
   it('does foo', () => {
     // foo!
   })

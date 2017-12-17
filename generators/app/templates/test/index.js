@@ -6,12 +6,6 @@ describe('Classes', () => {
   })
 })
 
-describe('Repos', () => {
-  describe('<%= aggregateName.titleCase %> Repo', () => {
-    require('../repos/<%= aggregateName.paramCase %>-repo/test')
-  })
-})
-
-describe('<%= aggregateName.titleCase %> Service', function() {
+describe('<%= aggregateName.titleCase %> Service', () => {
   require('../<%= aggregateName.paramCase %>-service/test/index.js')
 })

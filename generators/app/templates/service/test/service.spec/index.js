@@ -7,7 +7,7 @@ chai.should()
 let <%= aggregateName.camelCase %>Service
 
 beforeEach(() => {
-  <%= aggregateName.camelCase %>Service = require('../setup.js')()
+  <%= aggregateName.camelCase %>Service = require('../setup.js')
 })
 
 describe('#foo', () => {

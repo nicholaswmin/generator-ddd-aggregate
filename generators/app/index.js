@@ -42,22 +42,30 @@ module.exports = class extends Generator {
   createClass() {
     this.fs.copyTpl(
       this.templatePath('class/index.js'),
-      this.destinationPath(`classes/${this.props.aggregateName.paramCase}/index.js`),
+      this.destinationPath(
+        `${this.props.aggregateName.paramCase}/classes/${
+          this.props.aggregateName.paramCase
+        }/index.js`
+      ),
       { aggregateName: this.props.aggregateName }
     );
 
     this.fs.copyTpl(
       this.templatePath('class/test/index.js'),
-      this.destinationPath(`classes/${this.props.aggregateName.paramCase}/test/index.js`),
+      this.destinationPath(
+        `${this.props.aggregateName.paramCase}/classes/${
+          this.props.aggregateName.paramCase
+        }/test/index.js`
+      ),
       { aggregateName: this.props.aggregateName }
     );
 
     this.fs.copyTpl(
       this.templatePath('class/test/class.assertion.js'),
       this.destinationPath(
-        `classes/${this.props.aggregateName.paramCase}/test/${
+        `${this.props.aggregateName.paramCase}/classes/${
           this.props.aggregateName.paramCase
-        }.assertion.js`
+        }/test/${this.props.aggregateName.paramCase}.assertion.js`
       ),
       { aggregateName: this.props.aggregateName }
     );
@@ -66,57 +74,49 @@ module.exports = class extends Generator {
   createServiceClass() {
     this.fs.copyTpl(
       this.templatePath('service/index.js'),
-      this.destinationPath(`${this.props.aggregateName.paramCase}-service/index.js`),
+      this.destinationPath(
+        `${this.props.aggregateName.paramCase}/${
+          this.props.aggregateName.paramCase
+        }-service/index.js`
+      ),
       { aggregateName: this.props.aggregateName }
     );
 
     this.fs.copyTpl(
       this.templatePath('service/test/index.js'),
-      this.destinationPath(`${this.props.aggregateName.paramCase}-service/test/index.js`),
+      this.destinationPath(
+        `${this.props.aggregateName.paramCase}/${
+          this.props.aggregateName.paramCase
+        }-service/test/index.js`
+      ),
       { aggregateName: this.props.aggregateName }
     );
 
     this.fs.copyTpl(
       this.templatePath('service/test/service.spec/index.js'),
       this.destinationPath(
-        `${this.props.aggregateName.paramCase}-service/test/${
+        `${this.props.aggregateName.paramCase}/${
           this.props.aggregateName.paramCase
-        }-service.spec/index.js`
+        }-service/test/${this.props.aggregateName.paramCase}-service.spec/index.js`
       ),
       { aggregateName: this.props.aggregateName }
     );
 
     this.fs.copyTpl(
       this.templatePath('service/test/setup.js'),
-      this.destinationPath(`${this.props.aggregateName.paramCase}-service/test/setup.js`),
+      this.destinationPath(
+        `${this.props.aggregateName.paramCase}/${
+          this.props.aggregateName.paramCase
+        }-service/test/setup.js`
+      ),
       { aggregateName: this.props.aggregateName }
     );
   }
 
-  createPersistenceMechanisms() {
-    // DTGs
-
+  createRepo() {
     this.fs.copyTpl(
-      this.templatePath('repos/dtgs/dtg/index.js'),
-      this.destinationPath(
-        `repos/dtgs/${this.props.aggregateName.paramCase}-dtg/index.js`
-      ),
-      { aggregateName: this.props.aggregateName }
-    );
-
-    // Repo
-
-    this.fs.copyTpl(
-      this.templatePath('repos/repo/index.js'),
-      this.destinationPath(`repos/${this.props.aggregateName.paramCase}-repo/index.js`),
-      { aggregateName: this.props.aggregateName }
-    );
-
-    this.fs.copyTpl(
-      this.templatePath('repos/repo/test/index.js'),
-      this.destinationPath(
-        `repos/${this.props.aggregateName.paramCase}-repo/test/index.js`
-      ),
+      this.templatePath('repo/index.js'),
+      this.destinationPath(`${this.props.aggregateName.paramCase}/repo/index.js`),
       { aggregateName: this.props.aggregateName }
     );
   }
@@ -124,7 +124,7 @@ module.exports = class extends Generator {
   createMainTestHook() {
     this.fs.copyTpl(
       this.templatePath('test/index.js'),
-      this.destinationPath('test/index.js'),
+      this.destinationPath(`${this.props.aggregateName.paramCase}/test/index.js`),
       { aggregateName: this.props.aggregateName }
     );
   }
