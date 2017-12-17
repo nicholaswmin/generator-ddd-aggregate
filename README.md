@@ -29,7 +29,7 @@ $ npm i --save guid generic-repo http-errors
 $ npm i --save-dev chai mock-repo
 ```
 
-then, the following example creates an *Account* aggregate:
+then, the following example creates an *Account* Aggregate:
 
 ```bash
 $ yo ddd-aggregate
