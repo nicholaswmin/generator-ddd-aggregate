@@ -47,8 +47,9 @@ account
 │       │   ├── account.assertion.js
 │       │   └── index.js
 │       └── index.js
-├── repo
-│   └── index.js
+├── repos
+├───────account-repo
+│       └── index.js
 ├── account-service
 │   ├── test
 │   │   ├── account-service.spec

@@ -19,7 +19,7 @@ describe('generator-ddd-aggregate:app', () => {
   });
 
   it('creates Repo files', () => {
-    assert.file(['social-user/repo/index.js']);
+    assert.file(['social-user/repos/social-user-repo/index.js']);
   });
 
   it('creates Service files', () => {

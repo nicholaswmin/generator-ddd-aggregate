@@ -116,7 +116,7 @@ module.exports = class extends Generator {
   createRepo() {
     this.fs.copyTpl(
       this.templatePath('repo/index.js'),
-      this.destinationPath(`${this.props.aggregateName.paramCase}/repo/index.js`),
+      this.destinationPath(`${this.props.aggregateName.paramCase}/repos/${this.props.aggregateName.paramCase}-repo/index.js`),
       { aggregateName: this.props.aggregateName }
     );
   }
