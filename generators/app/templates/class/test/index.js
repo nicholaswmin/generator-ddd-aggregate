@@ -1,7 +1,6 @@
 'use strict'
 
 const chai = require('chai')
-const expect = chai.expect
 const <%= aggregateName.camelCase %>InstanceAssertion = require('./<%= aggregateName.paramCase %>.assertion.js')
 
 const <%= aggregateName.pascalCase %> = require('../index.js')

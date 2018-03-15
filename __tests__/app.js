@@ -15,7 +15,9 @@ describe('generator-ddd-aggregate:app', () => {
     assert.file(['social-user/classes/social-user/index.js']);
 
     assert.file(['social-user/classes/social-user/test/index.js']);
-    assert.file(['social-user/classes/social-user/test/social-user.assertion.js']);
+    assert.file([
+      'social-user/classes/social-user/test/social-user.assertion.js'
+    ]);
   });
 
   it('creates Repo files', () => {
@@ -25,8 +27,9 @@ describe('generator-ddd-aggregate:app', () => {
   it('creates Service files', () => {
     assert.file(['social-user/social-user-service/index.js']);
 
-    assert.file(['social-user/social-user-service/test/social-user-service.spec/index.js']);
+    assert.file([
+      'social-user/social-user-service/test/mocks/social-user-repo/index.js'
+    ]);
     assert.file(['social-user/social-user-service/test/index.js']);
-    assert.file(['social-user/social-user-service/test/setup.js']);
   });
 });

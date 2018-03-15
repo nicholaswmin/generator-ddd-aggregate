@@ -3,12 +3,11 @@
 const Guid = require('guid')
 
 class <%= aggregateName.pascalCase %> {
-  constructor(data) {
+  constructor({ id_<%= aggregateName.snakeCase %> = Guid.raw() }) {
     this.props = {
-      id_<%= aggregateName.snakeCase %>: data.id_<%= aggregateName.snakeCase %> || Guid.raw()
+      id_<%= aggregateName.snakeCase %>
     }
   }
-
 }
 
 module.exports = <%= aggregateName.pascalCase %>

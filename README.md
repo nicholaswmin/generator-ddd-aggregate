@@ -52,9 +52,9 @@ account
 │       └── index.js
 ├── account-service
 │   ├── test
-│   │   ├── account-service.spec
-│   │   │   └── index.js
-│   │   ├── setup.js
+│   │   ├── mocks
+│   │   │   └── account-repo
+│   │   │       └── index.js
 │   │   └── index.js
 │   └── index.js
 └── test

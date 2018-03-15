@@ -93,21 +93,11 @@ module.exports = class extends Generator {
     );
 
     this.fs.copyTpl(
-      this.templatePath('service/test/service.spec/index.js'),
+      this.templatePath('service/test/mocks/repo/index.js'),
       this.destinationPath(
         `${this.props.aggregateName.paramCase}/${
           this.props.aggregateName.paramCase
-        }-service/test/${this.props.aggregateName.paramCase}-service.spec/index.js`
-      ),
-      { aggregateName: this.props.aggregateName }
-    );
-
-    this.fs.copyTpl(
-      this.templatePath('service/test/setup.js'),
-      this.destinationPath(
-        `${this.props.aggregateName.paramCase}/${
-          this.props.aggregateName.paramCase
-        }-service/test/setup.js`
+        }-service/test/mocks/${this.props.aggregateName.paramCase}-repo/index.js`
       ),
       { aggregateName: this.props.aggregateName }
     );
